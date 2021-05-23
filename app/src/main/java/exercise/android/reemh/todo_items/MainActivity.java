@@ -1,25 +1,71 @@
 package exercise.android.reemh.todo_items;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.EditText;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-  public TodoItemsDataBase dataBase = null;
+    private EditText editText;
+    private TodoItemAdapter adapter;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    public TodoItemsDataBase dataBase = null;
 
-    if (dataBase == null) {
-      dataBase = new TodoItemsDataBaseImpl();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        if (dataBase == null) {
+            dataBase = new TodoItemsDataBaseImpl();
+        }
+
+        // Find all UI components.
+        FloatingActionButton createButton = findViewById(R.id.buttonCreateTodoItem);
+        editText = findViewById(R.id.editTextInsertTask);
+        RecyclerView recyclerView = findViewById(R.id.recyclerTodoItemsList);
+
+        // Set up Recycler View
+        adapter = new TodoItemAdapter();
+        adapter.dataBase = dataBase;
+        adapter.setItems(dataBase.getCurrentItems());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
+        // Set up listeners for UI elements
+        createButton.setOnClickListener(v -> {
+            String text = editText.getText().toString();
+            if (text.isEmpty()) {
+                return;
+            }
+
+            dataBase.addNewInProgressItem(text);
+            adapter.setItems(dataBase.getCurrentItems());
+            editText.setText("");
+        });
     }
 
-    // TODO: implement the specs as defined below
-    //    (find all UI components, hook them up, connect everything you need)
-  }
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("edit_text", editText.getText().toString());
+        outState.putSerializable("database", dataBase);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        editText.setText(savedInstanceState.getString("edit_text"));
+        dataBase = (TodoItemsDataBaseImpl) savedInstanceState.getSerializable("database");
+        adapter.dataBase = dataBase;
+        adapter.setItems(dataBase.getCurrentItems());
+    }
 }
 
 /*
@@ -27,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 SPECS:
 
 - the screen starts out empty (no items shown, edit-text input should be empty)
-- every time the user taps the "add TODO item" button:
+- every time the user taps the "add TodoItem" button:
     * if the edit-text is empty (no input), nothing happens
     * if there is input:
         - a new TodoItem (checkbox not checked) will be created and added to the items list

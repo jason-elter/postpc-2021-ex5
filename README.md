@@ -1,52 +1,26 @@
-# TodoItems List
+PLAGIARISM STATEMENT:
+I pledge the highest level of ethical principles in support of academic excellence.
+I ensure that all of my work reflects my own abilities and not those of someone else.
 
-An Android exercise for developers teaching how to play around with RecyclerView and Adapter
+ANSWERS TO HYPOTHETICAL QUESTIONS:
+I would set an onClickListener for the TextView on each holder to hide the TextView and
+display an EditView in the same place with the same text. I would also force the keyboard to open
+in this listener. Upon clicking somewhere else (can be done with OnFocusChangeListener) I
+would hide the EditText and display the TextView with the new text.
+I think it would be pretty easy to figure out this flow because it's quite common for text
+to be editable upon touch and it's a person first instinct to touch the part of the app they
+want to change.
+This flow is very consistent with others for editing text in android since it's a very common
+flow in many apps and it doesn't require adding any buttons (for example Google Keep uses this
+flow for its todo lists).
+Implementing this wouldn't be very difficult since it requires only doing the following:
+* Adding a setDescription function to the TodoList
+* Adding an EditText object to TodoItemHolder and to row_todo_item.xml which starts hidden
+  (same place as the TextView).
+* In the adapter's function 'onBindViewHolder' I would add an onClickListener which would
+  hide the TextView and show the EditText with TextView's text.
+* In the same function I would add a OnFocusChangeListener to the EditText that would
+  hide the EditText, show the TextView with EditText's text and then find that TodoItem,
+  update its description using setDescription and notify the adapter of the change in value.
 
-## Background:
-
-In this project, we are creating a TODO list app.
-The user can insert TodoItems, mark them as DONE or IN-PROGRESS, and delete them.
-
-The exact SPECS can be found at file `MainActivity.java`.
-
-*NOTICE:*
-The app implementation is extracted into logic and UI:
-
-Pure-logic should be implemented at `TodoItemsDataBaseImpl.java`.
-
-UI should be implemented at `MainActivity.java`.  
-
-## To fulfill this exercise:
-
-Take a look at the following files, read all of them, and make sure you understand them before starting to write any code:
-* `TodoItemsDataBase.java` (interface)
-* `TodoItemsDataBaseImpl.java` (default implementation of the interface)
-* `TodoItem` (data class representing a TODO item)
-* `MainActivity.java` (screen)
-
-After you understand them, go ahead and implement the needed SPECS as defined in `MainActivity`.
-
-> 🛈 **NOTICE:** \
-> You might need to modify classes, add fields, change methods etc etc.  
-> Don't be afraid, it's completely ok to modify existing code.
-
-## Tests:
-
-*Logic tests:*
-You are expected to add unit & flow tests to `TodoItemsHolderImplTest.java`.
-Read the entire file and then implement the TODOs in that file. 
-
-*UI tests:*
-You are expected to add a few tests to `MainActivityTest.java`.
-Read the entire file and then implement the TODOs in that file.
-
-## Remarks:
-
-Tests implementations should come *last*. Start with logic tests and then continue to UI tests. 
-My request to write tests is only an added-value for you to sharp your testing skills.
-If you see that the exercise takes too much time to implement even *without* writing the tests,
-please **LET ME KNOW** and I will drop the request for tests from the exercise submission.
-
----
-
-✨ Good luck! ✨
+No crackers, Gromit! We've forgotten the crackers!

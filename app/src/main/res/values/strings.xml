@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TodoItems</string>
+    <string name="dummy_text">Lovely Cheese!</string>
 </resources>
