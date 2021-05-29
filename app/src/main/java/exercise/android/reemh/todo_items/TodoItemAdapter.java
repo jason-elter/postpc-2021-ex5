@@ -1,24 +1,32 @@
 package exercise.android.reemh.todo_items;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemHolder> {
 
-    private List<TodoItem> items = new ArrayList<>();
+    private final TodoItemsDataBase dataBase;
+    private List<TodoItem> items;
 
-    public TodoItemsDataBase dataBase = null;
-
-    public void setItems(ArrayList<TodoItem> newItems) {
-        items = newItems;
+    public TodoItemAdapter(AppCompatActivity activity) {
+        super();
+        dataBase = TodoItemsApplication.getInstance().getDatabase();
+        items = dataBase.getCurrentItems();
         notifyDataSetChanged();
+
+        dataBase.getLiveData().observe(activity, todoItems -> {
+            items = todoItems;
+            notifyDataSetChanged();
+        });
     }
 
     @NonNull
@@ -42,14 +50,18 @@ public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemHolder> {
             } else {
                 dataBase.markItemDone(item);
             }
-            setItems(dataBase.getCurrentItems());
         });
 
-        // Delete item by long press.
-        holder.textView.setOnLongClickListener(v -> {
-            dataBase.deleteItem(item);
-            setItems(dataBase.getCurrentItems());
-            return true;
+        // Delete item.
+        holder.deleteView.setOnClickListener(v -> dataBase.deleteItem(item));
+
+        // Edit item.
+        holder.textView.setOnClickListener(v -> {
+            // Create new intent and open edit activity
+            Context context = v.getContext();
+            Intent editIntent = new Intent(context, EditActivity.class);
+            editIntent.putExtra("todo_item", item);
+            context.startActivity(editIntent);
         });
     }
 

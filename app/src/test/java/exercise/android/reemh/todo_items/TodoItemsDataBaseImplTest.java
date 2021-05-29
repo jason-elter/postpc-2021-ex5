@@ -40,7 +40,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_addingTodoItem_then_callingListShouldHaveThisItem() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -53,7 +53,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_addingInProgressTodoItem_then_callingListShouldHaveThisItemInProgress() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -67,7 +67,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_markingItemDone_then_callingListShouldHaveThisItemDone() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -85,7 +85,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_markingItemDoneAndThenInProgress_then_callingListShouldHaveThisItemInProgress() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -104,7 +104,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_addingTodoItemAndThenDeletingIt_then_callingListShouldNotHaveThisItem() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -120,7 +120,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_addingInProgressTodoItems_then_callingListShouldBeInCreationOrder() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -135,7 +135,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_addingTodoItems_then_callingListShouldHaveDoneItemsAtEnd() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -153,7 +153,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_markingItemDoneAndThenInProgress_then_callingListShouldHaveCorrectOrder() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -172,7 +172,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_deletingDoneItem_then_callingListShouldHaveCorrectOrder() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -191,7 +191,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_deletingInProgressItem_then_callingListShouldHaveCorrectOrder() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test
@@ -209,7 +209,7 @@ public class TodoItemsDataBaseImplTest {
     @Test
     public void when_markingAllItemsDone_then_callingListShouldHaveCorrectOrder() {
         // setup
-        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl();
+        TodoItemsDataBaseImpl dbUnderTest = new TodoItemsDataBaseImpl(null);
         Assert.assertEquals(0, dbUnderTest.getCurrentItems().size());
 
         // test

@@ -3,6 +3,7 @@ package exercise.android.reemh.todo_items;
 import android.graphics.Paint;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TodoItemHolder extends RecyclerView.ViewHolder {
     public final TextView textView;
     public final CheckBox progressCheckbox;
+    public final ImageView deleteView;
 
     public TodoItemHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
         super(itemView);
         textView = itemView.findViewById(R.id.descriptionText);
         progressCheckbox = itemView.findViewById(R.id.progressCheckbox);
+        deleteView = itemView.findViewById(R.id.deleteView);
     }
 
     public void setup(String newText, boolean isDone) {

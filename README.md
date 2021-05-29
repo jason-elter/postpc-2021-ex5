@@ -1,3 +1,7 @@
+I AM CURRENTLY TAKING THE IML COURSE AND WAS PRESENT AT THE MIDTERM SO ANY DELAY
+TO THE EXERCISE SUBMISSION IS DUE TO THAT. THIS COURSE'S STUDENT BOARD INFORMED US THAT
+DUE TO THE MIDTERM THAT WE GET AN EXTRA WEEK OR THIS EXERCISE. THANKS FOR UNDERSTANDING.
+
 PLAGIARISM STATEMENT:
 I pledge the highest level of ethical principles in support of academic excellence.
 I ensure that all of my work reflects my own abilities and not those of someone else.

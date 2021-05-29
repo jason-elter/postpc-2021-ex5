@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">TodoItems</string>
     <string name="dummy_text">Lovely Cheese!</string>
+    <string name="edit_item">Edit Item</string>
+    <string name="creation_date">Creation Date:</string>
+    <string name="modification_date">Modification Date:</string>
+    <string name="description">Description:</string>
+    <string name="status">Status:</string>
+    <string name="add_description">Add description</string>
 </resources>
